@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+
+
+}
+
+header {
+  display: flex;
+  color: white;
+  align-items: center;
+  margin-left: 200px;
+
+  img {
+    transform: scale(0.5);
+  }
+
+  .date-display {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      &:nth-child(1) {
+        font-size: 3rem;
+      }
+
+      &:nth-child(2) {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 3rem;
+    margin-left: auto;
+    margin-right: 500px;
+  }
+}
+
+
+.main {
+  width: 100%;
+  min-height: 50vh;
+}
+
+.control {
+  width: 1000px;
+  height: 50px;
+  display: flex;
+  margin-left: 20px;
+  margin-bottom: 30px;
+
+  .to-monitor {
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    padding-top: 10px;
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    height: 100%;
+    width: 25%;
+  }
+
+  .to-attackhistory {
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    padding-top: 10px;
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    color: white;
+    height: 100%;
+    width: 25%;
+  }
+
+  .active {
+    background-color: rgb(13, 150, 181);
+  }
+}
