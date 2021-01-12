@@ -60,9 +60,9 @@ def RF_Preprocessing(df):
     return df
 
 
-model_GRU_path = '/home/truc/doan/server/GRU.h5'
-model_CNN_path = '/home/truc/doan/server/cnn.h5'
-model_RF_path = '/home/truc/doan/server/RandomForest.joblib'
+model_GRU_path = '/home/truc/doan/server/predict-service/GRU.h5'
+model_CNN_path = '/home/truc/doan/server/predict-service/cnn.h5'
+model_RF_path = '/home/truc/doan/server/predict-service/RandomForest.joblib'
 
 
 def predict(features_array):
