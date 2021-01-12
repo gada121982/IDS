@@ -42,8 +42,15 @@ app.get('/', (req, res) => {
 
 app.post('/feature', async (req, res) => {
   let {features} = req.body
-  let result = await predict(features)
 
+  console.log('feature', features)
+  let result = ''
+  try {
+    result = await predict(features)
+  } catch (err) {
+    console.log('error predict', err)
+  }
+  
   SOCKET.forEach((socket) => {
     socket.emit('traffic', {result, features})
   }) 

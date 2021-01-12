@@ -7,5 +7,5 @@ https://drive.google.com/drive/folders/1MuhNxGOZJbeIu9FNkZUYLPDWrtGzgjm5?usp=sha
 These are model file 
 
 
-sklearn : 0.23.0
+sklearn : 2.3.0
 python < 3.9 (maybe 3.8 work with tensorflow)
