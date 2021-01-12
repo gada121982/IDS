@@ -42,11 +42,20 @@ app.get('/', (req, res) => {
 
 app.post('/feature', async (req, res) => {
   let {features} = req.body
+  features = features.replace('[', ' ').replace(']', ' ').trim().split(',')
 
-  console.log('feature', features)
+  let features_clean = []
+
+  for(let i = 0; i < features.length ; i++) {
+    features_clean.push(parseFloat(features[i]))
+  }
+
+
+  console.log('feature', features_clean)
+
   let result = ''
   try {
-    result = await predict(features)
+    result = await predict(features_clean)
   } catch (err) {
     console.log('error predict', err)
   }
