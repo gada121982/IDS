@@ -17,19 +17,19 @@ class Monitor extends Component {
 
     componentDidMount() {
         const socket = socketClient.connect(ENDPOINT)
-        let trafficRow = document.querySelector('.monitor table tr:nth-child(2)')   
         let dashboard = document.querySelector('.monitor table')   
         
         socket.on('traffic', (data) => {
-            const {features, result} = data
+
+            const trafficRow = document.querySelector('.monitor table tr:nth-child(2)')   
+            let {features, result} = data
 
             COUNT = COUNT + 1
             const LENGTH = features ? features.length : 0
             const tr = document.createElement('tr')    
         
-            
             const td_result = document.createElement('td')
-            let result_content = document.createTextNode(result ? 'True' : 'False')
+            let result_content = document.createTextNode(result ? 'Danger' : 'False')
             
             if(result === false){
                 td_result.classList.add('false')
@@ -53,14 +53,16 @@ class Monitor extends Component {
                 const content = document.createTextNode(features[i])
                 td.appendChild(content)
                 tr.appendChild(td)
-                console.log(tr)
             }
 
-            if (COUNT >= 100) {
+            if (COUNT >= 20) {
                 // remove table 0
-                console.log('overfload')
+                trafficRow.remove()
+                dashboard.appendChild(tr)
+                console.log('overload')
             } else {
                 // just append to
+
                 dashboard.appendChild(tr)
             }
         })
@@ -75,7 +77,6 @@ class Monitor extends Component {
                         <th>Time</th>
                         <th>dst_port</th>
                         <th>protocol</th>
-                        <th>timestamp</th>
                         <th>flow_duration</th>
                         <th>tot_fwd_pkts</th>
                         <th>tot_bwd_pkts</th>
@@ -106,11 +107,6 @@ class Monitor extends Component {
                         <th>pkt_size_avg</th>
                         <th>fwd_seg_size_avg</th>
                         <th>bwd_seg_size_avg</th>
-                        <th>fwd_byts/b_avg</th>
-                        <th>fwd_pkts/b_avg</th>
-                        <th>fwd_blk_rate_avg</th>
-                        <th>bwd_byts/b_avg</th>
-                        <th>bwd_pkts/b_avg</th>
                         <th>bwd_blk_rate_avg</th>
                         <th>subflow_fwd_pkts</th>
                         <th>subflow_fwd_byts</th>
@@ -119,7 +115,6 @@ class Monitor extends Component {
                         <th>init_fwd_win_byts</th>
                         <th>init_bwd_win_byts</th>
                         <th>fwd_act_data_pkts</th>
-                       
                     </tr>
       
                 </table>
