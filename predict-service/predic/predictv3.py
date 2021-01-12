@@ -114,6 +114,5 @@ features_arrayAttack = [8080,	6,	16079,	3,	4,	326,	129.0,	28297.77971,
                         186.578767,	248.771690,	13318.69643,	0,	0,	1,	1,	0,	0,	0,
                         1,	1,	65.0,	108.666667,	32.25,	0,	3,	326,	4,	129,	8192,	219,	1]
 
-result = predict(model_GRU_path, model_CNN_path,
-                 model_RF_path, features_arrayAttack)
+result = predict(features_arrayAttack)
 print(result)
