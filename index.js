@@ -2,6 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {predict} = require('./lib/predict')
 const cors = require('cors')
+const db = require('mongoose')
+const AttackHistory = require('./model/AttackHistory')
+
+console.log(AttackHistory)
+
+const DBURL = `mongodb+srv://doan:doan123456@cluster0.py1f7.mongodb.net/doan?retryWrites=true&w=majority`
+
+db.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true});
+
 
 app = express()
 const server = require('http').Server(app)
@@ -35,12 +44,33 @@ app.post('/feature', async (req, res) => {
   let {features} = req.body
   let result = await predict(features)
 
-  console.log(features.length)
-  console.log('socket length', SOCKET.length)
   SOCKET.forEach((socket) => {
     socket.emit('traffic', {result, features})
   }) 
+  if(result) {
+    // save to db
+    const attack = new AttackHistory({
+      features,
+      result
+    })
+    await attack.save()
+    
+    console.log('on danger')
+    SOCKET.forEach((socket) => {
+      socket.emit('danger', {result, features})
+    }) 
+      
+  }
   res.status(200).send({result})
+ 
+
+})
+
+app.get('/attackhistory', async (req, res) => {
+  let data = await AttackHistory.find({}).limit(50)
+  console.log('data', data)
+  res.send(data)
+
 })
 
 io.on('connection', function(socket){

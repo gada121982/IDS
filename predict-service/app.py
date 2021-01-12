@@ -1,4 +1,4 @@
-from predic.predictv2 import predict
+from predic.predictv3 import predict
 from flask import Flask, render_template, jsonify, request
 import json
 
@@ -13,7 +13,6 @@ def index():
 @app.route('/predict', methods=['POST', 'GET'])
 def index2():
     traffic = request.get_json()
-
     features_array = traffic['feature']
     result = predict(features_array)
 

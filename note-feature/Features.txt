@@ -1,0 +1,45 @@
+{0: 'Benign', 1: 'Bot'}
+
+Data columns (total 40 columns):
+ #   Column             Non-Null Count    Dtype  
+---  ------             --------------    -----  
+ 0   dst_port           1048575 non-null  int64  
+ 1   protocol           1048575 non-null  int64  
+ 2   flow_duration      1048575 non-null  int64  
+ 3   tot_fwd_pkts       1048575 non-null  int64  
+ 4   tot_bwd_pkts       1048575 non-null  int64  
+ 5   totlen_fwd_pkts    1048575 non-null  int64  
+ 6   totlen_bwd_pkts    1048575 non-null  float64
+ 7   flow_byts/s        1046017 non-null  float64
+ 8   flow_pkts/s        1048575 non-null  float64
+ 9   fwd_iat_tot        1048575 non-null  float64
+ 10  bwd_iat_tot        1048575 non-null  float64
+ 11  fwd_psh_flags      1048575 non-null  int64  
+ 12  bwd_psh_flags      1048575 non-null  int64  
+ 13  fwd_urg_flags      1048575 non-null  int64  
+ 14  bwd_urg_flags      1048575 non-null  int64  
+ 15  fwd_header_len     1048575 non-null  int64  
+ 16  bwd_header_len     1048575 non-null  int64  
+ 17  fwd_pkts/s         1048575 non-null  float64
+ 18  bwd_pkts/s         1048575 non-null  float64
+ 19  pkt_len_var        1048575 non-null  float64
+ 20  fin_flag_cnt       1048575 non-null  int64  
+ 21  syn_flag_cnt       1048575 non-null  int64  
+ 22  rst_flag_cnt       1048575 non-null  int64  
+ 23  psh_flag_cnt       1048575 non-null  int64  
+ 24  ack_flag_cnt       1048575 non-null  int64  
+ 25  urg_flag_cnt       1048575 non-null  int64  
+ 26  cwe_flag_count     1048575 non-null  int64  
+ 27  ece_flag_cnt       1048575 non-null  int64  
+ 28  down/up_ratio      1048575 non-null  int64  
+ 29  pkt_size_avg       1048575 non-null  float64
+ 30  fwd_seg_size_avg   1048575 non-null  float64
+ 31  bwd_seg_size_avg   1048575 non-null  float64
+ 32  bwd_blk_rate_avg   1048575 non-null  int64  
+ 33  subflow_fwd_pkts   1048575 non-null  int64  
+ 34  subflow_fwd_byts   1048575 non-null  int64  
+ 35  subflow_bwd_pkts   1048575 non-null  int64  
+ 36  subflow_bwd_byts   1048575 non-null  int64  
+ 37  init_fwd_win_byts  1048575 non-null  int64  
+ 38  init_bwd_win_byts  1048575 non-null  int64  
+ 39  fwd_act_data_pkts  1048575 non-null  int64  
