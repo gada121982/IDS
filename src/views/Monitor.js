@@ -18,7 +18,8 @@ class Monitor extends Component {
     componentDidMount() {
         const socket = socketClient.connect(ENDPOINT)
         let dashboard = document.querySelector('.monitor table')   
-        
+        let monitor = document.querySelector('.monitor')
+
         socket.on('traffic', (data) => {
 
             const trafficRow = document.querySelector('.monitor table tr:nth-child(2)')   
@@ -29,7 +30,7 @@ class Monitor extends Component {
             const tr = document.createElement('tr')    
         
             const td_result = document.createElement('td')
-            let result_content = document.createTextNode(result ? 'Danger' : 'False')
+            let result_content = document.createTextNode(result ? 'Danger' : 'OK')
             
             if(result === false){
                 td_result.classList.add('false')
@@ -60,10 +61,12 @@ class Monitor extends Component {
                 trafficRow.remove()
                 dashboard.appendChild(tr)
                 console.log('overload')
+
+                monitor.scrollTop = monitor.scrollHeight - monitor.clientHeight;
             } else {
                 // just append to
-
                 dashboard.appendChild(tr)
+                monitor.scrollTop = monitor.scrollHeight - monitor.clientHeight;
             }
         })
     }
